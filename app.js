@@ -1,102 +1,76 @@
 
 /* ==========================================
-   1. DATOS DE LA GRADUACIÓN UNIVERSITARIA
-   Modifica estos datos por los reales.
+   1. DATOS DE LA GRADUACIÓN
    ========================================== */
 
 const EVENTO = {
-  fechaTexto: "Sábado 30 de enero de 2027",
-  hora: "5:00 p. m.",
-  lugar: "Nombre del salón de eventos",
-  mapa: "https://maps.google.com/"
+    fechaTexto: "Sábado 30 de enero de 2027",
+    hora: "5:00 p. m.",
+    lugar: "Nombre del salón de eventos",
+    mapa: "https://maps.google.com/"
 };
 
 
 /* ==========================================
    2. LISTA DE INVITADOS
-   Agrega aquí a todas las personas.
-   Cada código debe ser único y sin espacios.
+   Cada código corresponde a una persona.
    ========================================== */
 
 const INVITADOS = {
-  carlos: {
-    nombre: "Carlos Martínez",
-    mensaje: "Gracias por acompañarme en este logro."
-  },
-
-  maria: {
-    nombre: "María López",
-    mensaje: "Será una alegría compartir este momento contigo."
-  },
-
-  familia: {
-    nombre: "Familia Hernández",
-    mensaje: "Los espero para celebrar juntos este día especial."
-  },
-
-  juan: {
-    nombre: "Juan Pérez",
-    mensaje: "Tu compañía hará este día aún más especial."
-  }
-
+    carlos: "Carlos Martínez",
+    maria: "María López",
+    juan: "Juan Pérez",
+    familia: "Familia Hernández"
 };
 
 
 /* ==========================================
-   3. MOSTRAR LOS DATOS DEL INVITADO
+   3. PERSONALIZAR EL NOMBRE DEL INVITADO
    Lee el código que viene en el enlace.
-   Ejemplo: ?id=carlos
    ========================================== */
 
 const parametros = new URLSearchParams(window.location.search);
 const codigo = parametros.get("id");
-const invitado = codigo ? INVITADOS[codigo] : null;
+const nombre = codigo ? INVITADOS[codigo] : null;
 
-const nombreElemento = document.getElementById("nombreInvitado");
-const mensajeElemento = document.getElementById("mensajeInvitado");
+const seccionDestinatario = document.getElementById(
+    "seccionDestinatario"
+);
 
-if (nombreElemento && mensajeElemento) {
-  if (invitado) {
-    nombreElemento.textContent = invitado.nombre;
-    mensajeElemento.textContent = invitado.mensaje;
-  } else {
-    nombreElemento.textContent = "Invitado especial";
-    mensajeElemento.textContent =
-      "Tu presencia hará este momento aún más especial.";
-  }
+const elementoNombre = document.getElementById("nombreInvitado");
+
+if (seccionDestinatario && elementoNombre) {
+    if (nombre) {
+        elementoNombre.textContent = nombre;
+        seccionDestinatario.hidden = false;
+    } else {
+        elementoNombre.textContent = "";
+        seccionDestinatario.hidden = true;
+    }
 }
 
 
 /* ==========================================
-   4. MOSTRAR FECHA, HORA Y LUGAR
+   4. MOSTRAR LOS DATOS DEL EVENTO
    ========================================== */
 
-const fechaElemento = document.getElementById("fechaEvento");
-const horaElemento = document.getElementById("horaEvento");
-const lugarElemento = document.getElementById("lugarEvento");
-
-if (fechaElemento) {
-  fechaElemento.textContent = EVENTO.fechaTexto;
-}
-
-if (horaElemento) {
-  horaElemento.textContent = EVENTO.hora;
-}
-
-if (lugarElemento) {
-  lugarElemento.textContent = EVENTO.lugar;
-}
-
-
-/* ==========================================
-   5. BOTÓN DE GOOGLE MAPS
-   Pega el enlace real de la ubicación.
-   ========================================== */
-
+const elementoFecha = document.getElementById("fechaEvento");
+const elementoHora = document.getElementById("horaEvento");
+const elementoLugar = document.getElementById("lugarEvento");
 const botonMapa = document.getElementById("botonMapa");
 
+if (elementoFecha) {
+    elementoFecha.textContent = EVENTO.fechaTexto;
+}
+
+if (elementoHora) {
+    elementoHora.textContent = EVENTO.hora;
+}
+
+if (elementoLugar) {
+    elementoLugar.textContent = EVENTO.lugar;
+}
+
 if (botonMapa) {
-  botonMapa.href = EVENTO.mapa;
-  botonMapa.target = "_blank";
-  botonMapa.rel = "noopener noreferrer";
+    botonMapa.href = EVENTO.mapa;
 }
