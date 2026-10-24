@@ -4,10 +4,10 @@
    ========================================== */
 
 const EVENTO = {
-    fechaTexto: "Sábado 30 de enero de 2027",
-    hora: "5:00 p. m.",
-    lugar: "Nombre del salón de eventos",
-    mapa: "https://maps.google.com/"
+    fechaTexto: "Sábado 31 de Octubre de 2026",
+    hora: "4:00 p. m.",
+    lugar: "Restaurante Finca La Colina",
+    mapa: "https://maps.app.goo.gl/Qbo82f3sDgaeQfu8A"
 };
 
 
